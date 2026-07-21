@@ -17,31 +17,42 @@ trial_columns = ["MASTER_LEFT_POS_X", "MASTER_LEFT_POS_Y", "MASTER_LEFT_POS_Z", 
 
 result_columns = ["trial", "self_skil", "grs_score", "tissue_respect", "handling", "time_and_motion", "flow", "performance", "quality"]
 
-features_columns = [ 
-    # Metadata
-    "Trial_ID", "Task", "Subject", "Repetition", "Frames", "Duration_Seconds", "Sampling_Rate",
-    # Labels
-    "Self_Proclaimed_Skill", "GRS_Total",
-    # Left Hand - Speed
-    "Left_Mean_Speed", "Left_Median_Speed", "Left_Max_Speed", "Left_Speed_Std",
-    # Right Hand - Speed
-    "Right_Mean_Speed", "Right_Median_Speed", "Right_Max_Speed", "Right_Speed_Std",
-    # Left Hand - Idle
-    "Left_Idle_Ratio", "Left_Idle_Time",
-    # Right Hand - Idle
-    "Right_Idle_Ratio","Right_Idle_Time",
-    # Left Hand - Acceleration
-    "Left_Mean_Acceleration", "Left_Max_Acceleration", "Left_Acceleration_Std",
-    # Right Hand - Acceleration
-    "Right_Mean_Acceleration", "Right_Max_Acceleration", "Right_Acceleration_Std",
-    # Left Hand - Jerk
-    "Left_Mean_Jerk", "Left_Max_Jerk",
-    # Right Hand - Jerk
-    "Right_Mean_Jerk", "Right_Max_Jerk",
-    # Path Length
-    "Left_Path_Length", "Right_Path_Length",
-    # Left Hand - Gripper
-    "Left_Mean_Gripper_Angle", "Left_Gripper_Angle_Std", "Left_Total_Gripper_Movement",
-    # Right Hand - Gripper
-    "Right_Mean_Gripper_Angle", "Right_Gripper_Angle_Std", "Right_Total_Gripper_Movement",
+required_feature_columns = [
+    "Frames",
+    "Duration_Seconds",
+
+    "Left_Mean_Speed",
+    "Left_Median_Speed",
+    "Left_Max_Speed",
+    "Left_Speed_Std",
+
+    "Right_Mean_Speed",
+    "Right_Median_Speed",
+    "Right_Max_Speed",
+    "Right_Speed_Std",
+
+    "Left_Idle_Ratio",
+    "Left_Idle_Time",
+    "Right_Idle_Ratio",
+    "Right_Idle_Time",
+
+    "Left_Mean_Acceleration",
+    "Left_Median_Acceleration",
+    "Left_Max_Acceleration",
+    "Left_Acceleration_Std",
+
+    "Right_Mean_Acceleration",
+    "Right_Median_Acceleration",
+    "Right_Max_Acceleration",
+    "Right_Acceleration_Std",
+
+    "Left_Mean_Jerk",
+    "Left_Median_Jerk",
+    "Left_Max_Jerk",
+    "Left_Jerk_Std",
+
+    "Right_Mean_Jerk",
+    "Right_Median_Jerk",
+    "Right_Max_Jerk",
+    "Right_Jerk_Std"
 ]

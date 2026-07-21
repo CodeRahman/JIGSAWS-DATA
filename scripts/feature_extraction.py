@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from pathlib import Path
+from columns import required_feature_columns
 
 
 features_df = pd.read_csv("features/features_dataset.csv")
@@ -188,45 +189,7 @@ def extract_features(file):
 
     return feature_values
 
-required_feature_columns = [
-    "Frames",
-    "Duration_Seconds",
 
-    "Left_Mean_Speed",
-    "Left_Median_Speed",
-    "Left_Max_Speed",
-    "Left_Speed_Std",
-
-    "Right_Mean_Speed",
-    "Right_Median_Speed",
-    "Right_Max_Speed",
-    "Right_Speed_Std",
-
-    "Left_Idle_Ratio",
-    "Left_Idle_Time",
-    "Right_Idle_Ratio",
-    "Right_Idle_Time",
-
-    "Left_Mean_Acceleration",
-    "Left_Median_Acceleration",
-    "Left_Max_Acceleration",
-    "Left_Acceleration_Std",
-
-    "Right_Mean_Acceleration",
-    "Right_Median_Acceleration",
-    "Right_Max_Acceleration",
-    "Right_Acceleration_Std",
-
-    "Left_Mean_Jerk",
-    "Left_Median_Jerk",
-    "Left_Max_Jerk",
-    "Left_Jerk_Std",
-
-    "Right_Mean_Jerk",
-    "Right_Median_Jerk",
-    "Right_Max_Jerk",
-    "Right_Jerk_Std"
-]
 
 for column in required_feature_columns:
     if column not in features_df.columns:
