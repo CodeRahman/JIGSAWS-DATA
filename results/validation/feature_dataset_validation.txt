@@ -1,0 +1,107 @@
+======================================================================
+FEATURE DATASET VALIDATION REPORT
+======================================================================
+
+1. DATASET SHAPE
+----------------------------------------------------------------------
+Rows: 103
+Columns: 43
+
+2. MISSING VALUES
+----------------------------------------------------------------------
+Trial_ID                     0
+Trial_Name                   0
+Task                         0
+Subject                      0
+Repetition                   0
+Frames                       0
+Duration_Seconds             0
+Self_Proclaimed_Skill        0
+GRS_Total                    0
+GRS_Tissue_Respect           0
+GRS_Handling                 0
+GRS_Time_Motion              0
+GRS_Flow                     0
+GRS_Performance              0
+GRS_Quality                  0
+Left_Mean_Speed              0
+Left_Median_Speed            0
+Left_Max_Speed               0
+Left_Speed_Std               0
+Right_Mean_Speed             0
+Right_Median_Speed           0
+Right_Max_Speed              0
+Right_Speed_Std              0
+Left_Idle_Ratio              0
+Left_Idle_Time               0
+Right_Idle_Ratio             0
+Right_Idle_Time              0
+Left_Mean_Acceleration       0
+Left_Median_Acceleration     0
+Left_Max_Acceleration        0
+Left_Acceleration_Std        0
+Right_Mean_Acceleration      0
+Right_Median_Acceleration    0
+Right_Max_Acceleration       0
+Right_Acceleration_Std       0
+Left_Mean_Jerk               0
+Left_Median_Jerk             0
+Left_Max_Jerk                0
+Left_Jerk_Std                0
+Right_Mean_Jerk              0
+Right_Median_Jerk            0
+Right_Max_Jerk               0
+Right_Jerk_Std               0
+
+3. DUPLICATE CHECKS
+----------------------------------------------------------------------
+Duplicate rows: 0
+Duplicate Trial IDs: 0
+Duplicate Trial Names: 0
+
+4. DURATION VALIDATION
+----------------------------------------------------------------------
+Maximum duration error: 2.842170943040401e-14
+
+5. IDLE RATIO RANGE
+----------------------------------------------------------------------
+Left_Idle_Ratio
+Minimum: 0.0964550700741962
+Maximum: 0.3767772511848341
+
+Right_Idle_Ratio
+Minimum: 0.0347826086956521
+Maximum: 0.3882718791648156
+
+6. IDLE TIME VALIDATION
+----------------------------------------------------------------------
+Left idle time greater than duration: 0
+Right idle time greater than duration: 0
+
+7. NEGATIVE FEATURE CHECK
+----------------------------------------------------------------------
+No negative feature values found.
+
+8. LOGICAL CONSISTENCY CHECKS
+----------------------------------------------------------------------
+Left speed max < mean: 0
+Right speed max < mean: 0
+Left speed max < median: 0
+Right speed max < median: 0
+Left acceleration max < mean: 0
+Right acceleration max < mean: 0
+Left acceleration max < median: 0
+Right acceleration max < median: 0
+Left jerk max < mean: 0
+Right jerk max < mean: 0
+Left jerk max < median: 0
+Right jerk max < median: 0
+
+9. IDLE RATIO FORMULA VALIDATION
+----------------------------------------------------------------------
+Maximum left idle-ratio error: 1.3877787807814457e-16
+Maximum right idle-ratio error: 1.3877787807814457e-16
+
+======================================================================
+OVERALL RESULT: VALIDATION PASSED
+======================================================================

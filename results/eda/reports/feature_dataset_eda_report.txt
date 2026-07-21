@@ -1,0 +1,116 @@
+================================================================================
+FEATURE DATASET EXPLORATORY DATA ANALYSIS REPORT
+================================================================================
+
+1. DATASET OVERVIEW
+--------------------------------------------------------------------------------
+Rows: 103
+Columns: 43
+Number of extracted features: 28
+Number of tasks: 3
+Number of subjects: 8
+
+2. TRIAL COUNTS BY TASK
+--------------------------------------------------------------------------------
+          Task  Trial_Count
+    Knot Tying           36
+Needle Passing           28
+      Suturing           39
+
+3. TRIAL COUNTS BY SELF-PROCLAIMED SKILL
+--------------------------------------------------------------------------------
+Skill_Code  Trial_Count  Skill_Level
+         N           46       Novice
+         I           28 Intermediate
+         E           29       Expert
+
+4. TRIAL COUNTS BY TASK AND SKILL
+--------------------------------------------------------------------------------
+Self_Proclaimed_Skill  Novice  Intermediate  Expert
+Task                                               
+Knot Tying                 16            10      10
+Needle Passing             11             8       9
+Suturing                   19            10      10
+
+5. GRS TOTAL SUMMARY
+--------------------------------------------------------------------------------
+count    103.000000
+mean      16.165049
+std        5.601290
+min        6.000000
+25%       12.000000
+50%       17.000000
+75%       20.000000
+max       30.000000
+
+6. TOP POSITIVE CORRELATIONS WITH GRS TOTAL
+--------------------------------------------------------------------------------
+                 Feature  Pearson_Correlation  Absolute_Correlation Direction
+          Left_Speed_Std             0.520226              0.520226  Positive
+   Left_Acceleration_Std             0.477075              0.477075  Positive
+         Left_Mean_Speed             0.438475              0.438475  Positive
+          Left_Max_Speed             0.419835              0.419835  Positive
+  Left_Mean_Acceleration             0.388724              0.388724  Positive
+           Left_Jerk_Std             0.355166              0.355166  Positive
+   Left_Max_Acceleration             0.332210              0.332210  Positive
+          Left_Mean_Jerk             0.300971              0.300971  Positive
+Left_Median_Acceleration             0.286168              0.286168  Positive
+         Right_Max_Speed             0.269234              0.269234  Positive
+
+7. TOP NEGATIVE CORRELATIONS WITH GRS TOTAL
+--------------------------------------------------------------------------------
+           Feature  Pearson_Correlation  Absolute_Correlation Direction
+    Left_Idle_Time            -0.149849              0.149849  Negative
+   Left_Idle_Ratio            -0.125712              0.125712  Negative
+Right_Median_Speed            -0.006408              0.006408  Negative
+   Right_Idle_Time            -0.003463              0.003463  Negative
+
+8. MOST SKEWED FEATURES
+--------------------------------------------------------------------------------
+                Feature  Skewness  Absolute_Skewness Interpretation
+          Left_Max_Jerk  2.337620           2.337620  Highly skewed
+         Left_Idle_Time  2.157784           2.157784  Highly skewed
+         Right_Max_Jerk  2.081945           2.081945  Highly skewed
+         Right_Jerk_Std  1.851890           1.851890  Highly skewed
+ Right_Acceleration_Std  1.847140           1.847140  Highly skewed
+ Right_Max_Acceleration  1.533109           1.533109  Highly skewed
+          Left_Jerk_Std  1.479031           1.479031  Highly skewed
+         Left_Max_Speed  1.446450           1.446450  Highly skewed
+  Left_Max_Acceleration  1.396500           1.396500  Highly skewed
+Right_Mean_Acceleration  1.335970           1.335970  Highly skewed
+
+9. OUTLIER SUMMARY
+--------------------------------------------------------------------------------
+Total IQR-identified outlier observations: 147
+Number of features containing at least one outlier: 26
+
+                  Feature  Outlier_Count
+       Right_Median_Speed             21
+        Left_Median_Speed             15
+          Right_Mean_Jerk             11
+            Left_Jerk_Std             10
+            Left_Max_Jerk              9
+           Right_Max_Jerk              8
+    Left_Acceleration_Std              6
+  Right_Mean_Acceleration              6
+Right_Median_Acceleration              6
+        Right_Median_Jerk              6
+           Left_Max_Speed              5
+           Left_Speed_Std              5
+   Right_Acceleration_Std              5
+         Right_Mean_Speed              4
+   Right_Max_Acceleration              4
+
+10. GENERATED OUTPUTS
+--------------------------------------------------------------------------------
+Histogram count: 28
+Overall boxplot count: 28
+Skill boxplot count: 28
+Task boxplot count: 28
+GRS scatterplot count: 28
+Correlation heatmaps: 1
+Correlation ranking charts: 1
+
+================================================================================
+EDA GENERATION COMPLETED SUCCESSFULLY
+================================================================================

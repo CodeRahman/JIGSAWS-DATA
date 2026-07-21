@@ -1,0 +1,85 @@
+Task,Feature,Pearson_Correlation
+Knot Tying,Left_Jerk_Std,0.6567799089223778
+Knot Tying,Right_Speed_Std,0.6345642959636271
+Knot Tying,Right_Mean_Speed,0.5891151402379238
+Knot Tying,Right_Acceleration_Std,0.5556724413924521
+Knot Tying,Left_Acceleration_Std,0.5482581109874017
+Knot Tying,Right_Max_Speed,0.5191452024398844
+Knot Tying,Right_Jerk_Std,0.5152266516392988
+Knot Tying,Left_Mean_Jerk,0.5102769586292722
+Knot Tying,Right_Mean_Acceleration,0.49858736409686655
+Knot Tying,Left_Mean_Acceleration,0.4853619778215206
+Knot Tying,Right_Max_Acceleration,0.44899037005274345
+Knot Tying,Right_Mean_Jerk,0.44578606683493266
+Knot Tying,Right_Median_Speed,0.4440010011271577
+Knot Tying,Right_Median_Acceleration,0.4155955189596474
+Knot Tying,Right_Max_Jerk,0.3854745873007916
+Knot Tying,Left_Median_Jerk,0.3685305875039775
+Knot Tying,Left_Idle_Time,-0.34369348907768105
+Knot Tying,Right_Median_Jerk,0.33086256815858717
+Knot Tying,Left_Speed_Std,0.31607250484152094
+Knot Tying,Left_Median_Acceleration,0.28934608713452015
+Knot Tying,Right_Idle_Time,-0.26345120538029565
+Knot Tying,Left_Mean_Speed,0.2328674468792424
+Knot Tying,Left_Max_Jerk,0.18866344442601407
+Knot Tying,Left_Max_Speed,0.17450754859741616
+Knot Tying,Left_Median_Speed,0.14519833976321933
+Knot Tying,Left_Max_Acceleration,0.13249665129168656
+Knot Tying,Left_Idle_Ratio,0.0723211157962392
+Knot Tying,Right_Idle_Ratio,-0.023700056491283105
+Needle Passing,Right_Jerk_Std,-0.6538449648051505
+Needle Passing,Right_Mean_Jerk,-0.606462792434321
+Needle Passing,Right_Median_Speed,-0.5656662910024792
+Needle Passing,Right_Median_Jerk,-0.5385474247564322
+Needle Passing,Right_Acceleration_Std,-0.5172357273996647
+Needle Passing,Right_Mean_Acceleration,-0.47162152564724324
+Needle Passing,Right_Max_Jerk,-0.4207045443780712
+Needle Passing,Right_Idle_Ratio,0.3842449540862806
+Needle Passing,Right_Max_Acceleration,-0.3723493229894083
+Needle Passing,Left_Jerk_Std,-0.3466796207708532
+Needle Passing,Left_Idle_Time,-0.3367508629877078
+Needle Passing,Right_Median_Acceleration,-0.3305304266321754
+Needle Passing,Left_Idle_Ratio,-0.27354685087559955
+Needle Passing,Left_Max_Jerk,-0.25765890685625953
+Needle Passing,Left_Mean_Speed,0.16760596998616387
+Needle Passing,Left_Max_Acceleration,-0.15357792334138676
+Needle Passing,Right_Max_Speed,-0.13578117567528036
+Needle Passing,Right_Mean_Speed,-0.1087312073152281
+Needle Passing,Left_Acceleration_Std,-0.10794891949625322
+Needle Passing,Left_Speed_Std,0.10307596482001707
+Needle Passing,Right_Idle_Time,0.09288869930821451
+Needle Passing,Left_Median_Jerk,0.08847502076020962
+Needle Passing,Left_Max_Speed,-0.07449383057539838
+Needle Passing,Left_Mean_Jerk,-0.06124984606626165
+Needle Passing,Left_Median_Acceleration,0.05068363035345835
+Needle Passing,Left_Median_Speed,-0.020163848555286024
+Needle Passing,Right_Speed_Std,-0.007678194933686899
+Needle Passing,Left_Mean_Acceleration,0.0032928560675731587
+Suturing,Left_Speed_Std,0.6284166679197203
+Suturing,Left_Acceleration_Std,0.6278245418054578
+Suturing,Left_Max_Acceleration,0.6253654156213051
+Suturing,Left_Mean_Speed,0.6196460102788056
+Suturing,Left_Median_Acceleration,0.6043212599096526
+Suturing,Left_Mean_Acceleration,0.5897926379712191
+Suturing,Left_Max_Speed,0.5471831831663044
+Suturing,Left_Idle_Ratio,-0.5181632956458427
+Suturing,Left_Mean_Jerk,0.49449090628046555
+Suturing,Left_Median_Jerk,0.44862694419725047
+Suturing,Left_Idle_Time,-0.4434079868248152
+Suturing,Left_Median_Speed,0.4421356993318077
+Suturing,Left_Jerk_Std,0.3883365942864922
+Suturing,Left_Max_Jerk,0.38083375257767926
+Suturing,Right_Max_Speed,0.2915699240879077
+Suturing,Right_Idle_Time,-0.28704369998501666
+Suturing,Right_Median_Speed,-0.2725459984521105
+Suturing,Right_Max_Acceleration,0.2607915682686724
+Suturing,Right_Median_Acceleration,0.16698974259829494
+Suturing,Right_Acceleration_Std,0.15551240199600494
+Suturing,Right_Speed_Std,0.14416139104176076
+Suturing,Right_Mean_Acceleration,0.1385604379937229
+Suturing,Right_Max_Jerk,0.12106916553254081
+Suturing,Right_Mean_Jerk,0.08688596291057919
+Suturing,Right_Jerk_Std,0.05600051687156867
+Suturing,Right_Median_Jerk,0.053203218505460816
+Suturing,Right_Mean_Speed,-0.046939382748822825
+Suturing,Right_Idle_Ratio,-0.027855149647406485
