@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Human Skill Estimation | Abdurrahman Oyediran</title>
+
+  <meta
+    name="description"
+    content="Machine learning-based human skill estimation from kinematic motion for adaptive assistive robotics."
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+
+    <nav class="nav container">
+      <a href="#" class="logo">Human Skill Estimation</a>
+
+      <div class="nav-links">
+        <a href="#research">Research</a>
+        <a href="#results">Results</a>
+        <a href="#future">Future Work</a>
+        <a
+          href="https://github.com/CodeRahman/human-skill-estimation"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+      </div>
+    </nav>
+
+    <div class="hero-content container">
+
+      <p class="eyebrow">
+        NSF REU SITE: HUMANS MOVE · University of Wyoming · Summer 2026
+      </p>
+
+      <h1>
+        Human Skill Estimation
+        <span>from Kinematic Motion</span>
+      </h1>
+
+      <p class="hero-description">
+        Exploring whether machine learning can estimate human skill from
+        general movement characteristics, with the long-term goal of enabling
+        adaptive shared-autonomy systems in assistive robotics.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a
+          class="button primary"
+          href="https://github.com/CodeRahman/human-skill-estimation"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View GitHub
+        </a>
+
+        <a class="button secondary" href="#results">
+          Explore Results
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <!-- STATS -->
+    <section class="stats-section">
+      <div class="container stats-grid">
+
+        <div class="stat">
+          <span class="stat-number">103</span>
+          <span class="stat-label">Trials</span>
+        </div>
+
+        <div class="stat">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Tasks</span>
+        </div>
+
+        <div class="stat">
+          <span class="stat-number">29</span>
+          <span class="stat-label">Engineered Features</span>
+        </div>
+
+        <div class="stat">
+          <span class="stat-number">6+</span>
+          <span class="stat-label">Regression Models</span>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- RESEARCH QUESTION -->
+    <section id="research" class="section">
+
+      <div class="container narrow">
+
+        <p class="section-label">Research Question</p>
+
+        <h2>
+          Can characteristics of human movement be used to estimate skill?
+        </h2>
+
+        <p class="large-text">
+          Assistive robots may eventually need to understand how capable a user
+          is before deciding how much assistance to provide.
+        </p>
+
+        <p>
+          This project investigates the skill-estimation component of that
+          problem. Using kinematic data from the JIGSAWS dataset, movement
+          characteristics were extracted and used to train machine learning
+          models to estimate Global Rating Scale skill scores.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- PIPELINE -->
+    <section class="section alt">
+
+      <div class="container">
+
+        <p class="section-label">Methodology</p>
+        <h2>Research Pipeline</h2>
+
+        <div class="pipeline">
+
+          <div class="pipeline-card">
+            <span>01</span>
+            <h3>Kinematic Data</h3>
+            <p>
+              Robotic movement trajectories from the JIGSAWS dataset.
+            </p>
+          </div>
+
+          <div class="pipeline-arrow">→</div>
+
+          <div class="pipeline-card">
+            <span>02</span>
+            <h3>Feature Extraction</h3>
+            <p>
+              Speed, acceleration, jerk, idle behavior, variability, and
+              duration.
+            </p>
+          </div>
+
+          <div class="pipeline-arrow">→</div>
+
+          <div class="pipeline-card">
+            <span>03</span>
+            <h3>Machine Learning</h3>
+            <p>
+              Regression models trained to estimate continuous GRS skill
+              scores.
+            </p>
+          </div>
+
+          <div class="pipeline-arrow">→</div>
+
+          <div class="pipeline-card">
+            <span>04</span>
+            <h3>Evaluation</h3>
+            <p>
+              Subject-independent validation on people not observed during
+              training.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- DATASET -->
+    <section class="section">
+
+      <div class="container split">
+
+        <div>
+
+          <p class="section-label">Dataset</p>
+
+          <h2>
+            103 trials across three robotic manipulation tasks
+          </h2>
+
+          <p>
+            The JHU-ISI Gesture and Skill Assessment Working Set (JIGSAWS)
+            contains robotic surgical kinematic data recorded using the
+            da Vinci Surgical System.
+          </p>
+
+          <p>
+            Although the dataset originates in surgery, this project focuses
+            on general characteristics of human motion rather than
+            task-specific trajectory geometry.
+          </p>
+
+        </div>
+
+        <div class="task-list">
+
+          <div class="task">
+            <span>Knot Tying</span>
+            <strong>36 trials</strong>
+          </div>
+
+          <div class="task">
+            <span>Needle Passing</span>
+            <strong>28 trials</strong>
+          </div>
+
+          <div class="task">
+            <span>Suturing</span>
+            <strong>39 trials</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- RESULTS -->
+    <section id="results" class="section dark">
+
+      <div class="container">
+
+        <p class="section-label">Results</p>
+        <h2>Best Model: Tuned Gradient Boosting</h2>
+
+        <p class="results-intro">
+          After evaluating several regression models and tuning the strongest
+          nonlinear candidates, Gradient Boosting achieved the best overall
+          subject-independent performance.
+        </p>
+
+        <div class="metrics">
+
+          <div class="metric-card">
+            <span>MAE</span>
+            <strong>4.299</strong>
+          </div>
+
+          <div class="metric-card">
+            <span>RMSE</span>
+            <strong>5.193</strong>
+          </div>
+
+          <div class="metric-card">
+            <span>R²</span>
+            <strong>0.132</strong>
+          </div>
+
+        </div>
+
+        <div class="result-image">
+
+          <img
+            src="images/actual_vs_predicted_gradient_boosting.png"
+            alt="Actual versus predicted GRS scores for the tuned Gradient Boosting model"
+          >
+
+        </div>
+
+        <p class="figure-caption">
+          Actual versus predicted GRS skill scores under subject-independent
+          evaluation.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- INTERPRETATION -->
+    <section class="section">
+
+      <div class="container">
+
+        <p class="section-label">Model Interpretation</p>
+        <h2>What characteristics mattered?</h2>
+
+        <div class="split interpretation">
+
+          <div>
+
+            <p>
+              Permutation importance suggests that movement variability,
+              smoothness, and idle behavior contain useful information for
+              estimating skill.
+            </p>
+
+            <div class="feature-list">
+
+              <div>
+                <strong>1</strong>
+                <span>Left speed variability</span>
+              </div>
+
+              <div>
+                <strong>2</strong>
+                <span>Left jerk variability</span>
+              </div>
+
+              <div>
+                <strong>3</strong>
+                <span>Right idle ratio</span>
+              </div>
+
+              <div>
+                <strong>4</strong>
+                <span>Right median speed</span>
+              </div>
+
+              <div>
+                <strong>5</strong>
+                <span>Left acceleration variability</span>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="feature-image">
+
+            <img
+              src="images/poster_feature_importance.png"
+              alt="Permutation feature importance chart"
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FINDINGS -->
+    <section class="section alt">
+
+      <div class="container">
+
+        <p class="section-label">Key Findings</p>
+        <h2>What the study showed</h2>
+
+        <div class="findings-grid">
+
+          <article class="finding-card">
+            <span>01</span>
+            <h3>Motion contains information about skill.</h3>
+            <p>
+              The best subject-independent model achieved a positive R²,
+              indicating that movement characteristics contain measurable
+              predictive information.
+            </p>
+          </article>
+
+          <article class="finding-card">
+            <span>02</span>
+            <h3>Generalization is difficult.</h3>
+            <p>
+              Performance on unseen individuals remains challenging,
+              highlighting the importance of subject-independent evaluation.
+            </p>
+          </article>
+
+          <article class="finding-card">
+            <span>03</span>
+            <h3>Variability matters.</h3>
+            <p>
+              Speed and jerk variability were among the strongest individual
+              predictors identified by the final model.
+            </p>
+          </article>
+
+          <article class="finding-card">
+            <span>04</span>
+            <h3>Simple features are not enough.</h3>
+            <p>
+              An R² of 0.132 shows that handcrafted summary features capture
+              only part of the structure associated with human skill.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FUTURE -->
+    <section id="future" class="section">
+
+      <div class="container narrow">
+
+        <p class="section-label">Future Work</p>
+
+        <h2>From offline skill estimation to adaptive assistance</h2>
+
+        <p class="large-text">
+          The next step is not simply to improve the regression score.
+        </p>
+
+        <p>
+          Future research can preserve the temporal structure of movement,
+          evaluate skill across broader manipulation tasks, and ultimately
+          investigate whether real-time skill estimates can improve adaptive
+          shared-control systems.
+        </p>
+
+        <div class="future-flow">
+
+          <span>Human Motion</span>
+          <b>→</b>
+          <span>Skill Estimator</span>
+          <b>→</b>
+          <span>Shared Autonomy</span>
+          <b>→</b>
+          <span>Adaptive Assistance</span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="section dark">
+
+      <div class="container narrow">
+
+        <p class="section-label">About the Research</p>
+
+        <h2>NSF REU SITE: HUMANS MOVE</h2>
+
+        <p>
+          This project was completed during the Summer 2026 HUMANS MOVE
+          Research Experiences for Undergraduates program at the University
+          of Wyoming in the Robotics & Intelligent Systems Lab.
+        </p>
+
+        <p>
+          <strong>Researcher:</strong> Abdurrahman Oyediran<br>
+          Computer Science · University of Southern Mississippi
+        </p>
+
+        <p>
+          <strong>Mentorship:</strong><br>
+          Dr. Chao Jiang<br>
+          Umur Atan<br>
+          Varun Bharadwaj
+        </p>
+
+        <a
+          class="button primary"
+          href="https://github.com/CodeRahman/human-skill-estimation"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Explore the Full Project
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+
+    <div class="container footer-content">
+
+      <p>
+        © 2026 Abdurrahman Oyediran
+      </p>
+
+      <a
+        href="https://github.com/CodeRahman/human-skill-estimation"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub
+      </a>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
