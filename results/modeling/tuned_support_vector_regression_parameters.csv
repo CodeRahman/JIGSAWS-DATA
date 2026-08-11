@@ -1,0 +1,9 @@
+Model,Outer_Fold,Test_Subject,model__kernel,model__gamma,model__epsilon,model__C
+Tuned Support Vector Regression,1,B,rbf,scale,1.0,25
+Tuned Support Vector Regression,2,C,rbf,0.001,0.5,100
+Tuned Support Vector Regression,3,D,rbf,scale,1.0,25
+Tuned Support Vector Regression,4,E,rbf,scale,1.0,25
+Tuned Support Vector Regression,5,F,rbf,0.05,1.0,5
+Tuned Support Vector Regression,6,G,rbf,auto,0.25,2
+Tuned Support Vector Regression,7,H,rbf,0.05,1.0,5
+Tuned Support Vector Regression,8,I,rbf,0.001,0.5,100

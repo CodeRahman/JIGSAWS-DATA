@@ -1,0 +1,9 @@
+Model,Outer_Fold,Test_Subject,model__n_estimators,model__min_samples_split,model__min_samples_leaf,model__max_features,model__max_depth,model__bootstrap
+Tuned Random Forest,1,B,300,6,4,0.5,8.0,False
+Tuned Random Forest,2,C,300,2,1,sqrt,8.0,True
+Tuned Random Forest,3,D,500,8,1,sqrt,,False
+Tuned Random Forest,4,E,700,4,1,0.5,12.0,True
+Tuned Random Forest,5,F,700,4,1,0.5,12.0,True
+Tuned Random Forest,6,G,300,6,4,0.5,8.0,False
+Tuned Random Forest,7,H,500,6,1,0.5,3.0,True
+Tuned Random Forest,8,I,700,4,2,0.5,8.0,False

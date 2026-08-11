@@ -1,0 +1,9 @@
+Model,Outer_Fold,Test_Subject,model__subsample,model__n_estimators,model__min_samples_split,model__min_samples_leaf,model__max_features,model__max_depth,model__learning_rate
+Tuned Gradient Boosting,1,B,0.6,300,6,3,0.5,1,0.05
+Tuned Gradient Boosting,2,C,0.6,200,4,4,sqrt,1,0.1
+Tuned Gradient Boosting,3,D,0.6,300,6,3,0.5,1,0.05
+Tuned Gradient Boosting,4,E,0.8,100,2,1,0.75,4,0.05
+Tuned Gradient Boosting,5,F,0.6,100,2,4,0.5,1,0.2
+Tuned Gradient Boosting,6,G,0.8,100,2,1,0.75,4,0.05
+Tuned Gradient Boosting,7,H,0.6,50,4,4,sqrt,1,0.2
+Tuned Gradient Boosting,8,I,0.8,200,4,1,0.5,3,0.03
