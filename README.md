@@ -1,24 +1,37 @@
-# Machine Learning-Based Human Skill Estimation for Assistive Robotics
+# Human Skill Estimation from Kinematic Motion
 
-**NSF REU SITE: HUMANS MOVE — University of Wyoming, Summer 2026**
+Machine learning-based estimation of human skill from kinematic movement features, developed during the **NSF REU SITE: HUMANS MOVE** program at the **University of Wyoming**.
 
-This project investigates whether task-independent characteristics of human movement can be used to estimate human skill using machine learning, with the long-term goal of supporting adaptive shared-autonomy systems in assistive robotics.
+This project investigates whether general characteristics of human motion can be used to estimate skill, with the long-term goal of supporting adaptive shared-autonomy systems in assistive robotics.
 
-Using kinematic data from the **JHU-ISI Gesture and Skill Assessment Working Set (JIGSAWS)**, I developed an end-to-end pipeline for processing robotic movement data, extracting interpretable motion features, analyzing their relationships with skill, and training regression models to estimate Global Rating Scale (GRS) scores.
+---
+
+## Overview
+
+Assistive robotic systems often provide a fixed or manually selected level of assistance. A system capable of estimating a user's skill from their movement could eventually adapt its behavior according to the user's current ability.
+
+This project focuses on the **skill-estimation component** of that broader problem.
+
+Using the **JHU-ISI Gesture and Skill Assessment Working Set (JIGSAWS)**, I developed an end-to-end machine learning pipeline to:
+
+- Process robotic kinematic data
+- Extract interpretable movement features
+- Analyze relationships between motion and skill
+- Train regression models to predict skill scores
+- Evaluate generalization to unseen subjects
+- Investigate which movement characteristics contribute most to prediction
 
 ---
 
 ## Research Question
 
-**Can task-independent characteristics of human movement be used to estimate skill, and can machine learning models learn these relationships well enough to support future adaptive shared-autonomy systems?**
+> **Can task-independent characteristics of human movement be used to estimate skill using machine learning?**
 
-Many assistive robotic systems use fixed or manually selected levels of assistance. A system capable of estimating a user's skill from their movement could eventually adapt the amount or type of assistance it provides.
-
-This project explores the **skill-estimation component** of that broader problem.
+A secondary question is whether such a skill estimator could eventually serve as an input to an adaptive shared-autonomy system.
 
 ---
 
-## Project Pipeline
+## Research Pipeline
 
 ```text
 JIGSAWS Kinematic Data
@@ -27,7 +40,7 @@ JIGSAWS Kinematic Data
 Data Processing
         │
         ▼
-Motion Feature Extraction
+Feature Extraction
         │
         ├── Speed
         ├── Acceleration
@@ -45,121 +58,101 @@ Machine Learning Regression
 Subject-Independent Evaluation
         │
         ▼
-Estimated GRS Skill Score
+Estimated Skill Score
 ```
 
 ---
 
 ## Dataset
 
-The project uses the **JIGSAWS dataset**, which contains robotic surgical activity performed using the da Vinci Surgical System.
+The project uses the **JIGSAWS dataset**, which contains robotic surgical activity collected using the da Vinci Surgical System.
 
 Three tasks were analyzed:
 
-| Task           |  Trials |
-| -------------- | ------: |
-| Knot Tying     |      36 |
-| Needle Passing |      28 |
-| Suturing       |      39 |
-| **Total**      | **103** |
+| Task | Trials |
+|---|---:|
+| Knot Tying | 36 |
+| Needle Passing | 28 |
+| Suturing | 39 |
+| **Total** | **103** |
 
-Each trial contains time-series kinematic measurements describing the movements of the robotic system.
+Although JIGSAWS originates from robot-assisted surgery, this project emphasizes **general characteristics of movement** rather than surgical trajectory-specific features.
 
-Although JIGSAWS originates from robot-assisted surgery, this project focuses on extracting **general characteristics of human motion** rather than task-specific surgical features.
+### Prediction Target
 
-### Skill Target
+Skill estimation is formulated as a regression problem using the **Global Rating Scale (GRS) Total Score**.
 
-Skill is modeled as a regression problem using the **Global Rating Scale (GRS) Total Score** provided with JIGSAWS.
+The GRS consists of six dimensions:
 
-The total GRS score is derived from six assessment dimensions:
+- Respect for tissue
+- Suture/needle handling
+- Time and motion
+- Flow of operation
+- Overall performance
+- Quality of final product
 
-* Respect for tissue
-* Suture/needle handling
-* Time and motion
-* Flow of operation
-* Overall performance
-* Quality of final product
-
-Each component is scored from 1–5, producing a total score ranging from **6–30**.
+Each component is scored from 1 to 5, giving a total score between **6 and 30**.
 
 ---
 
 ## Feature Engineering
 
-Rather than relying on task-specific information such as trajectory shape or path length, the project emphasizes movement characteristics that could potentially transfer across tasks.
-
-Features were calculated separately for the left and right manipulators.
+Features were extracted independently from the left and right manipulators.
 
 ### Speed
 
-For each side:
-
-* Mean speed
-* Median speed
-* Maximum speed
-* Speed standard deviation
-
-The instantaneous 3D speed magnitude is calculated from the Cartesian velocity components.
+- Mean speed
+- Median speed
+- Maximum speed
+- Speed standard deviation
 
 ### Acceleration
 
-Acceleration is derived from changes in speed between consecutive samples.
+- Mean acceleration
+- Median acceleration
+- Maximum acceleration
+- Acceleration standard deviation
 
-Extracted statistics include:
+### Jerk / Smoothness
 
-* Mean acceleration magnitude
-* Median acceleration magnitude
-* Maximum acceleration magnitude
-* Acceleration standard deviation
-
-### Jerk
-
-Jerk measures changes in acceleration and serves as a representation of movement smoothness.
-
-Extracted statistics include:
-
-* Mean jerk magnitude
-* Median jerk magnitude
-* Maximum jerk magnitude
-* Jerk standard deviation
+- Mean jerk
+- Median jerk
+- Maximum jerk
+- Jerk standard deviation
 
 ### Idle Behavior
 
-Periods of very low movement are used to characterize pauses and inactivity.
+- Idle time
+- Idle ratio
 
-Features include:
+### Trial-Level Information
 
-* Idle time
-* Idle ratio
+- Trial duration
 
-These are calculated independently for the left and right manipulators.
+The final modeling dataset contains **29 engineered movement features**.
 
-### Duration
-
-The total duration of each trial is also included.
-
-In total, **29 movement features** are used for modeling.
+The emphasis is on features that may be less dependent on the geometry of a specific task than measures such as raw path length.
 
 ---
 
 ## Exploratory Data Analysis
 
-Before model training, exploratory analysis was performed to understand the structure and behavior of the extracted feature dataset.
+Exploratory analysis was performed before model training to understand the structure of the extracted feature dataset.
 
 The analysis includes:
 
-* Descriptive statistics
-* Missing-value validation
-* Feature distributions
-* Outlier detection using the IQR rule
-* Feature skewness
-* Feature correlations
-* Feature relationships with GRS
-* Comparisons across skill levels
-* Comparisons across tasks
-* Comparisons across subjects
+- Descriptive statistics
+- Missing-value checks
+- Feature distributions
+- Skewness analysis
+- IQR-based outlier detection
+- Feature correlations
+- Relationships between features and GRS scores
+- Comparisons across skill levels
+- Comparisons across tasks
+- Comparisons across subjects
 
-The resulting plots and reports are available under:
+EDA outputs are available in:
 
 ```text
 results/eda/
@@ -167,196 +160,172 @@ results/eda/
 
 ---
 
-## Machine Learning
+## Machine Learning Models
 
-The problem is formulated as **regression**, where the input is a set of extracted movement features and the output is the predicted GRS Total score.
+The following regression models were evaluated:
 
-Models evaluated include:
+- Ridge Regression
+- Elastic Net
+- Random Forest
+- Extra Trees
+- Gradient Boosting
+- Support Vector Regression
 
-* Ridge Regression
-* Elastic Net
-* Random Forest
-* Extra Trees
-* Gradient Boosting
-* Support Vector Regression
+A **Dummy Regressor** was included as a baseline.
 
-A Dummy Regressor was also evaluated as a baseline.
-
-Selected nonlinear models were subsequently tuned to determine whether their performance could be improved.
+The best-performing nonlinear models were then tuned and evaluated again.
 
 ---
 
 ## Subject-Independent Evaluation
 
-A major concern when estimating human skill is **data leakage between trials from the same individual**.
+One of the most important design decisions in the project was avoiding subject leakage.
 
-If trials from one person appear in both the training and testing sets, a model may partially learn characteristics of that individual instead of learning movement patterns that generalize to unseen people.
+Trials from the same participant were not allowed to appear in both training and testing data within an evaluation fold.
 
-For this reason, the models were evaluated using **subject-independent cross-validation**, holding out subjects during evaluation.
+The central evaluation question therefore becomes:
 
-This creates a more difficult but more realistic test:
+> **Can the model estimate the skill of a person it did not see during training?**
 
-> Can the model estimate skill for a person it did not see during training?
+This makes the evaluation substantially more difficult, but also more representative of how a practical skill-estimation system would need to operate.
 
 ---
 
 # Results
 
-## Model Comparison
+## Initial Model Comparison
 
-Among the initial models, Random Forest achieved the lowest MAE:
-
-| Model                     |   MAE |  RMSE |     R² |
-| ------------------------- | ----: | ----: | -----: |
-| Random Forest             | 4.345 | 5.367 |  0.073 |
-| Extra Trees               | 4.424 | 5.463 |  0.039 |
-| Gradient Boosting         | 4.750 | 5.975 | -0.149 |
-| Dummy Regressor           | 4.907 | 5.786 | -0.078 |
+| Model | MAE | RMSE | R² |
+|---|---:|---:|---:|
+| Random Forest | **4.345** | 5.367 | 0.073 |
+| Extra Trees | 4.424 | 5.463 | 0.039 |
+| Gradient Boosting | 4.750 | 5.975 | -0.149 |
+| Dummy Regressor | 4.907 | 5.786 | -0.078 |
 | Support Vector Regression | 4.936 | 5.849 | -0.101 |
-| Elastic Net               | 5.131 | 6.214 | -0.243 |
-| Ridge Regression          | 5.595 | 6.758 | -0.470 |
+| Elastic Net | 5.131 | 6.214 | -0.243 |
+| Ridge Regression | 5.595 | 6.758 | -0.470 |
 
-After hyperparameter tuning, **Gradient Boosting produced the strongest overall performance**.
-
-## Best Model
-
-### Tuned Gradient Boosting
-
-| Metric   |    Result |
-| -------- | --------: |
-| **MAE**  | **4.299** |
-| **RMSE** | **5.193** |
-| **R²**   | **0.132** |
-
-The positive R² indicates that the model captures some relationship between the engineered movement features and GRS skill scores.
-
-However, the relatively low R² also demonstrates that these summary-level kinematic features explain only a limited portion of the variation in skill.
-
-This is an important result of the project: **human skill cannot be reliably represented by a small collection of simple movement statistics alone.**
-
-![Actual vs Predicted GRS](results/modeling/actual_vs_predicted_gradient_boosting.png)
+Random Forest produced the lowest MAE before hyperparameter tuning.
 
 ---
 
-## What Movement Characteristics Matter?
+## Best Tuned Model
 
-Permutation feature importance was used to investigate which individual movement characteristics contributed most strongly to the Gradient Boosting model.
+After hyperparameter tuning, **Gradient Boosting achieved the strongest overall performance**:
 
-The highest mean importance values included:
+| Metric | Result |
+|---|---:|
+| **MAE** | **4.299** |
+| **RMSE** | **5.193** |
+| **R²** | **0.132** |
 
-| Feature                              | Mean Importance |
-| ------------------------------------ | --------------: |
-| Left Speed Standard Deviation        |           0.263 |
-| Left Jerk Standard Deviation         |           0.156 |
-| Right Idle Ratio                     |           0.089 |
-| Right Median Speed                   |           0.079 |
-| Left Acceleration Standard Deviation |           0.077 |
+The tuned model demonstrates that the engineered movement features contain some predictive information about skill under subject-independent evaluation.
 
-These results suggest that **movement variability, smoothness, and idle behavior** contain useful information for distinguishing skill.
+![Actual vs Predicted Skill](results/modeling/actual_vs_predicted_gradient_boosting.png)
+
+The positive R² indicates that the model captures some relationship between the engineered kinematic features and GRS skill scores.
+
+At the same time, the relatively low R² shows that simple trial-level summary statistics explain only a limited portion of the variance in skill.
+
+This result suggests that **human skill appears to be reflected in movement, but it is not fully represented by a small collection of handcrafted summary features.**
+
+---
+
+## Feature Importance
+
+Permutation feature importance was used to investigate which individual motion features contributed most strongly to Gradient Boosting predictions.
+
+The strongest mean importance values included:
+
+| Feature | Mean Importance |
+|---|---:|
+| Left Speed Standard Deviation | **0.263** |
+| Left Jerk Standard Deviation | **0.156** |
+| Right Idle Ratio | **0.089** |
+| Right Median Speed | **0.079** |
+| Left Acceleration Standard Deviation | **0.077** |
+
+These results suggest that **movement variability, smoothness, and idle behavior** contain useful information for estimating skill.
 
 ![Feature Importance](results/modeling/poster_feature_importance.png)
 
 ---
 
-## Feature Family Ablation Study
+## Key Findings
 
-To understand the contribution of broader movement characteristics, entire feature families were removed and the model was retrained.
+### 1. Kinematic movement contains information about skill
 
-| Features Removed    |       MAE | Change in MAE |
-| ------------------- | --------: | ------------: |
-| None — All Features | **4.299** |             — |
-| Jerk                |     4.439 |        +3.25% |
-| Duration            |     4.563 |        +6.14% |
-| Acceleration        |     4.592 |        +6.80% |
-| Speed               |     4.630 |        +7.69% |
-| Idle Behavior       |     4.820 |   **+12.10%** |
+The best subject-independent model achieved a positive R², suggesting that motion-derived features contain measurable information associated with GRS skill.
 
-Removing **idle features produced the largest deterioration in prediction accuracy**, followed by speed and acceleration features.
+### 2. Generalization to unseen individuals is difficult
 
-This suggests that pauses and periods of low movement may carry useful information about skill that is not completely represented by conventional speed or smoothness measurements.
+The evaluation setup intentionally requires models to predict skill for subjects not observed during training.
 
-![Feature Family Ablation](results/modeling/poster_feature_family_ablation.png)
+This is a considerably harder problem than randomly splitting individual trials.
 
----
+### 3. Movement variability appears important
 
-# Key Findings
+Speed and jerk variability were among the strongest individual predictors in the final Gradient Boosting model.
 
-The experiments produced several important observations.
+### 4. Idle behavior may contain useful skill information
 
-**1. Human skill is partially reflected in kinematic movement characteristics.**
+The importance of idle-related features suggests that pauses or periods of low movement may help distinguish different patterns of task execution.
 
-The best model achieved a positive R² under subject-independent evaluation, suggesting that movement-derived features contain measurable information related to skill.
+### 5. Handcrafted summary statistics are not sufficient
 
-**2. Generalization to unseen individuals is difficult.**
+The final R² of **0.132** indicates that most of the variation in GRS scores remains unexplained by the current feature representation.
 
-Performance varied between held-out subjects, demonstrating the challenge of building a skill estimator that generalizes beyond the individuals represented during training.
-
-**3. Idle behavior appears particularly informative.**
-
-Removing idle-related features produced the largest increase in prediction error in the feature-family ablation experiment.
-
-**4. Movement variability and smoothness are important individual predictors.**
-
-Speed variability and jerk variability appeared among the strongest individual features.
-
-**5. Simple summary features are not sufficient for highly accurate skill estimation.**
-
-An R² of 0.132 indicates that most variation in GRS score remains unexplained by the current feature representation.
-
-Rather than treating this as evidence that skill estimation is impossible, the result motivates richer representations of human movement.
+This motivates future approaches that preserve more of the temporal structure of human movement.
 
 ---
 
-# Limitations
-
-Several limitations affect the conclusions that can be drawn from this study.
+## Limitations
 
 ### Small Dataset
 
-The dataset contains only 103 trials, limiting the amount of information available for model training.
+The study contains only 103 trials, limiting the amount of data available for training and evaluation.
 
 ### Limited Number of Subjects
 
-Subject-independent evaluation significantly reduces the effective amount of training data in each fold.
+Subject-independent validation significantly reduces the amount of training data available within each fold.
 
 ### Surgical Domain
 
-Although the selected features were designed to describe general movement characteristics, the underlying data originates from surgical tasks.
+JIGSAWS contains surgical manipulation tasks.
 
-Additional datasets involving non-surgical human manipulation would be necessary to determine whether these relationships generalize to broader assistive-robotics settings.
+Although the selected features were intended to describe more general movement characteristics, additional non-surgical datasets would be needed to determine whether the findings generalize to broader assistive-robotics applications.
 
-### Handcrafted Summary Features
+### Handcrafted Features
 
-Each trial is reduced to summary statistics.
+Each entire trial is compressed into summary statistics.
 
-This removes much of the temporal structure of the original motion.
+This removes much of the temporal structure contained in the original motion.
 
-Two users could therefore produce similar averages while exhibiting very different movement patterns over time.
+Two users may produce similar average speeds or accelerations while exhibiting very different sequences of movement.
 
-### GRS as Ground Truth
+### Skill Label
 
-GRS was designed to evaluate surgical performance rather than general human motor skill.
+GRS was designed to assess surgical skill rather than general-purpose human motor ability.
 
-Future work should investigate skill representations better suited to general human-robot interaction.
+Future work should explore alternative skill representations better suited to broader human-robot interaction.
 
 ---
 
-# Future Work
+## Future Work
 
-This project represents an initial step toward adaptive skill-aware robotic assistance.
+Potential extensions include:
 
-Future directions include:
+- Evaluating the feature framework on non-surgical manipulation datasets
+- Collecting more task-independent human manipulation data
+- Investigating coordination between the left and right manipulators
+- Introducing additional movement-efficiency and smoothness measures
+- Modeling full temporal sequences rather than trial-level statistics
+- Investigating sequence models for kinematic data
+- Developing task-normalized skill representations
+- Estimating skill in real time
+- Integrating skill estimates into adaptive shared-autonomy controllers
 
-* Evaluating the feature framework on non-surgical manipulation datasets
-* Collecting task-independent human manipulation data
-* Exploring additional measures of coordination and movement efficiency
-* Modeling temporal motion directly rather than relying only on trial-level statistics
-* Investigating sequence models for kinematic data
-* Developing task-normalized representations of skill
-* Evaluating whether skill estimates can improve adaptive shared-control policies
-* Moving from offline skill estimation toward real-time inference
-
-The long-term objective is a system in which estimated human skill can become one input into an adaptive shared-autonomy framework:
+The long-term vision is:
 
 ```text
 Human Motion
@@ -376,16 +345,16 @@ Adaptive Robotic Assistance
 
 ---
 
-# Repository Structure
+## Repository Structure
 
 ```text
 JIGSAWS-DATA/
 │
 ├── raw/
-│   └── Original kinematic data
+│   └── Raw JIGSAWS kinematic data
 │
 ├── processed/
-│   └── Processed trial-level kinematic data
+│   └── Processed trial data
 │
 ├── features/
 │   └── Extracted feature dataset
@@ -404,53 +373,55 @@ JIGSAWS-DATA/
 │
 ├── documents/
 │
-└── model_training.ipynb
+├── model_training.ipynb
+├── .gitignore
+└── README.md
 ```
 
 ---
 
-# Tools & Technologies
+## Technologies
 
-* Python
-* pandas
-* NumPy
-* scikit-learn
-* Matplotlib
-* Jupyter Notebook
-* Git / GitHub
+- Python
+- pandas
+- NumPy
+- scikit-learn
+- Matplotlib
+- Jupyter Notebook
+- Git
+- GitHub
 
 ---
 
-# Research Context
+## Research Context
 
-This project was completed during the **NSF REU SITE: HUMANS MOVE** program at the **University of Wyoming** during Summer 2026.
+This project was completed during the **NSF REU SITE: HUMANS MOVE** program at the **University of Wyoming** in Summer 2026.
 
 The work was conducted in the **Robotics & Intelligent Systems Lab**.
 
 ### Researcher
 
-**Abdurrahman Oyediran**
-
-Computer Science
+**Abdurrahman Oyediran**  
+Computer Science  
 University of Southern Mississippi
 
 ### Mentorship
 
-* Dr. Chao Jiang
-* Umur Atan
-* Varun Bharadwaj
+- Dr. Chao Jiang
+- Umur Atan
+- Varun Bharadwaj
 
 ---
 
-# Acknowledgments
+## Acknowledgments
 
-I would like to thank my mentors and the researchers involved in the HUMANS MOVE REU program for their guidance and feedback throughout the project.
+I would like to thank my mentors and the HUMANS MOVE REU program for their guidance and support throughout this project.
 
-This work uses the **JHU-ISI Gesture and Skill Assessment Working Set (JIGSAWS)**. Credit for the original dataset belongs to its creators and associated institutions.
+This project uses the **JHU-ISI Gesture and Skill Assessment Working Set (JIGSAWS)**. Credit for the original dataset belongs to its creators and associated institutions.
 
 ---
 
-# Disclaimer
+## Disclaimer
 
 This project is an undergraduate research prototype intended to investigate machine learning methods for human skill estimation.
 
@@ -460,6 +431,6 @@ The models presented here are **not clinical assessment systems** and should not
 
 ## Project Status
 
-**Summer 2026 REU research project — completed initial study.**
+**Completed initial study — Summer 2026.**
 
-Ongoing directions include expanding the skill representation beyond handcrafted summary features and investigating its potential integration with adaptive shared-autonomy systems.
+Current directions include richer temporal representations of movement and investigating how skill estimation could eventually inform adaptive shared-autonomy systems.
